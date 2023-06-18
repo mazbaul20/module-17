@@ -36,3 +36,9 @@ Route::get('/AdvanceWhereClauses3',[QueryBuilderController::class,'AdvanceWhereC
 Route::get('/AdvanceWhereClauses4',[QueryBuilderController::class,'AdvanceWhereClauses4']);
 // order By Asc Desc and random
 Route::get('/orderByAscDesc',[QueryBuilderController::class,'OrderByAscDesc']);
+// Latest & Oldest
+Route::get('/latestoldest',[QueryBuilderController::class,'LatestOldest']);
+// groupBy and having
+Route::get('/groupByandhaving',[QueryBuilderController::class,'groupByandhaving']);
+// Insert Statements
+Route::get('/insert',[QueryBuilderController::class,'Insert']);

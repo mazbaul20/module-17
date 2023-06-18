@@ -181,5 +181,39 @@ class QueryBuilderController extends Controller
             ->get();
         return $inRandomOrder;
     }
+    // Latest and Oldest and Skip-Take method
+    function LatestOldest(){
+        $query = DB::table('products')
+            ->latest()
+            ->first();
+        $query = DB::table('products')
+            ->oldest()
+            ->first();
+        $query = DB::table('products')
+            ->skip(2)
+            ->take(3)
+            ->get();
+        return $query;
+    }
+    // groupBy and having
+    function groupByandhaving(){
+        $query = DB::table('products')
+            ->groupBy('price')
+            ->get();
+        $query = DB::table('products')
+            ->groupBy('price')
+            ->having('price','>',2000)
+            ->get();
+        return $query;
+    }
+    // Insert Statements
+    function Insert(){
+        $query = DB::table('brands')
+            ->insert([
+                'brandName' => 'Toyota',
+                'brandImg'  => 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cardekho.com%2Ftoyota%2Fgallery&psig=AOvVaw2bG4SnmFJdAzjDLrVZHRuN&ust=1687195941953000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCKj8r-iszf8CFQAAAAAdAAAAABAE'
+            ]);
+        return $query;
+    }
 
 }
