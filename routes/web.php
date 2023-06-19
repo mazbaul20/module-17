@@ -42,3 +42,16 @@ Route::get('/latestoldest',[QueryBuilderController::class,'LatestOldest']);
 Route::get('/groupByandhaving',[QueryBuilderController::class,'groupByandhaving']);
 // Insert Statements
 Route::get('/insert',[QueryBuilderController::class,'Insert']);
+// Insert Statements part-2
+Route::post('/insert2',[QueryBuilderController::class,'Insert2']);
+// Update Statements
+Route::post('/update',[QueryBuilderController::class,'Update']);
+// Route::post('/update/{id}',[QueryBuilderController::class,'Update']);
+
+// Update or Insert Statements
+Route::post('/updateorinsert/{brand_Name}',[QueryBuilderController::class,'UpdateOrInsert']);
+// Increment & Decrement
+Route::post('/IncrementDecrement',[QueryBuilderController::class,'IncrementDecrement']);
+// Delete Statements
+Route::delete('/delete/{id}',[QueryBuilderController::class,'DeleteData']);
+

@@ -215,5 +215,83 @@ class QueryBuilderController extends Controller
             ]);
         return $query;
     }
+    // Insert Statements part-2
+    function Insert2(Request $request){
+        // $query = DB::table('brands')
+        //     ->insert([
+        //         'brandName' => $request->brandName,
+        //         'brandImg'  => $request->brandImg
+        //     ]);
 
+        // Other way
+        // $query = DB::table('brands')
+        // ->insert($request->input());
+
+        // Anather way data insert
+        $query = DB::table('brands')
+            ->insert([
+                'brandName' => $request->input('brandName'),
+                'brandImg'  => $request->input('brandImg')
+            ]);
+        return $query;
+    }
+    // Update Statements
+    function Update(Request $request){
+        $update = DB::table('brands')
+            ->where('id','=',7)
+            ->update([
+                'brandName' => 'Discover 125',
+                'brandImg'  => 'Discover 125 image'
+            ]);
+
+        // Anather way
+        // $update = DB::table('brands')
+        //     ->where('id','=',$request->id)
+        //     ->update($request->input());
+
+        // other way
+        // $update = DB::table('brands')
+        //     ->where('id','=',7)
+        //     ->update([
+        //         'brandName' => $request->brandName,
+        //         'brandImg'  => $request->brandImg
+        //     ]);
+        return $update;
+    }
+    // Update or Insert Statements
+    function UpdateOrInsert(Request $request){
+        // $inserorupdate = DB::table('brands')
+        //     ->updateOrInsert(
+        //         ['brandName'=>$request->brand_Name],
+        //         $request->input()
+        //     );
+        // Other way
+        $inserorupdate = DB::table('brands')
+            ->updateOrInsert(
+                ['brandName'=>$request->brand_Name],
+                [
+                    'brandName'=>$request->brandName,
+                    'brandImg'=>$request->brandImg,
+                ]
+            );
+        return $inserorupdate;
+    }
+    // Increment & Decrement
+    function IncrementDecrement(){
+        // $result = DB::table('products')
+        //     ->where('id','=',6)
+        //     ->increment('price',2);
+        // Decrement
+        $result = DB::table('products')
+            ->where('id','=',6)
+            ->decrement('price',2);
+        return $result;
+    }
+    // Delete Statements
+    function DeleteData(Request $request){
+        $delete = DB::table('brands')
+            ->where('id','=',$request->id)
+            ->delete();
+        return $delete;
+    }
 }
